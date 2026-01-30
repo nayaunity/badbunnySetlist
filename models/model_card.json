@@ -1,0 +1,55 @@
+{
+  "model_name": "Logistic Regression",
+  "task": "Binary classification - Super Bowl setlist inclusion",
+  "trained_at": "2026-01-30T13:58:37.000511",
+  "dataset": {
+    "source": "data/processed/training_data.csv",
+    "total_samples": 342,
+    "positive_class_definition": "Top 15% by combined_score"
+  },
+  "features": {
+    "count": 26,
+    "names": [
+      "times_performed_live",
+      "performance_frequency",
+      "ever_performed_live",
+      "avg_setlist_position",
+      "days_since_release",
+      "is_latest_album",
+      "release_year",
+      "is_primary_artist",
+      "num_featured_artists",
+      "has_featured_artist",
+      "duration_seconds",
+      "in_halftime_trailer",
+      "confirmed_for_halftime",
+      "cultural_significance",
+      "performed_superbowl_2020",
+      "has_english_lyrics",
+      "major_collab_artist",
+      "medley_friendly",
+      "duration_bucket_long",
+      "duration_bucket_medium",
+      "duration_bucket_short",
+      "duration_bucket_nan",
+      "position_category_closer",
+      "position_category_middle",
+      "position_category_opener",
+      "position_category_nan"
+    ]
+  },
+  "validation_metrics": {
+    "holdout": "Puerto Rico residency shows",
+    "precision": 0.9259,
+    "recall": 0.5814,
+    "f1": 0.7143,
+    "auc_roc": 0.8342
+  },
+  "cross_validation": {
+    "folds": 5,
+    "f1_mean": 0.7719,
+    "f1_std": 0.1031,
+    "auc_mean": 0.9756,
+    "auc_std": 0.0156
+  }
+}

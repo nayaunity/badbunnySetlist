@@ -119,6 +119,7 @@ SUPERBOWL_HALFTIME_DATA = [
 PROJECT_ROOT = Path(__file__).parent.parent
 DATA_RAW_DIR = PROJECT_ROOT / "data" / "raw"
 DATA_PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
+MODELS_DIR = PROJECT_ROOT / "models"
 
 # Rate Limiting
 REQUESTS_PER_MINUTE = 10
