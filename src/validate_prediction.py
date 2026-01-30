@@ -83,14 +83,18 @@ EXTERNAL_SIGNALS = {
             "updated": "January 30, 2026"
         },
         "J Balvin": {
-            "likelihood": "MEDIUM",
-            "reason": "Long-time collaborator, appeared at SB 2020 together",
-            "song": "Oasis tracks or I Like It"
+            "likelihood": "MEDIUM-HIGH",
+            "reason": "Long-time collaborator, appeared at SB 2020 together, secondary guest option",
+            "song": "Oasis tracks or I Like It",
+            "note": "Could join Cardi B for full 'I Like It' reunion"
         },
         "Daddy Yankee": {
-            "likelihood": "MEDIUM",
-            "reason": "Rumored for La Santa performance",
-            "song": "La santa"
+            "likelihood": "LOW",
+            "reason": "DECLINED secular music - retired for religious mission (Dec 2023)",
+            "song": "Sonríele (inspirational only)",
+            "quote": "I'm in a different mission right now. So I gotta represent what I'm doing right now 100 percent.",
+            "source": "Complex, Jan 2026",
+            "note": "Will NOT perform Gasolina or La santa"
         },
         "Residente": {
             "likelihood": "LOW-MEDIUM",
@@ -194,9 +198,12 @@ def validate_song(song: Dict, external: Dict) -> SongValidation:
     # Check guest artist implications
     for artist, info in external["guest_artist_rumors"].items():
         if info.get("song") and name.lower() in info["song"].lower():
-            if info["likelihood"] in ["MEDIUM-HIGH", "MEDIUM"]:
+            if info["likelihood"] in ["HIGH", "MEDIUM-HIGH", "MEDIUM"]:
                 support.append(f"Guest potential: {artist} ({info['likelihood']})")
-                adjustment += 0.01
+                if info["likelihood"] == "HIGH":
+                    adjustment += 0.02
+                else:
+                    adjustment += 0.01
 
     # Calculate adjusted confidence
     adjusted = min(1.0, max(0, original_conf + adjustment))
@@ -301,16 +308,26 @@ This means **Cardi B will already be at Levi's Stadium** to support her boyfrien
 1. **Repeat Performance**: NFL may want fresh content, not SB 2020 callback
 2. **Time Constraint**: Adding a guest takes stage time for transitions
 3. **Bad Bunny's Vision**: He may want a fully Spanish-language show
-4. **Daddy Yankee Priority**: If only one guest, La santa with Daddy Yankee may be preferred
 
-### Likelihood Assessment
+### ⚠️ Daddy Yankee Update (January 30, 2026)
+
+Per [Complex interview](https://www.complex.com/music/a/bernadette-giacomazzo/daddy-yankee-says-he-wouldnt-perform-gasolina-with-bad-bunny):
+
+> "I'm in a different mission right now. So I gotta represent what I'm doing right now 100 percent."
+
+**Daddy Yankee has DECLINED** to perform secular music. He retired in December 2023 for his religious mission. The only track he'd consider is his inspirational song "Sonríele" — which doesn't fit a Super Bowl halftime energy.
+
+**This makes Cardi B the clear primary guest option.**
+
+### Likelihood Assessment (Updated)
 
 | Scenario | Probability |
 |----------|-------------|
-| Cardi B appears with "I Like It" | **35%** (up from 10%) |
-| No guest appearances | 40% |
-| Daddy Yankee appears (La santa) | 20% |
-| Other guest (J Balvin, Rosalía) | 5% |
+| Cardi B appears with "I Like It" | **40%** ⬆️ |
+| No guest appearances | 35% |
+| J Balvin appears (solo or with Cardi) | 15% |
+| ~~Daddy Yankee appears (La santa)~~ | ~~20%~~ → **5%** (Sonríele only) |
+| Other guest (Rosalía, Residente) | 5% |
 
 """
     return scenario
@@ -384,9 +401,20 @@ def update_predictions(predictions: Dict, validations: List[SongValidation]) -> 
         "wild_card_scenario": {
             "trigger": "Cardi B at Levi's Stadium (boyfriend Stefon Diggs playing)",
             "song": "I Like It",
-            "likelihood": "35%",
+            "likelihood": "40%",
             "would_replace": "Estamos bien or Neverita",
             "note": "Logistics advantage may override 'no repeat' rule from SB 2020"
+        },
+        "guest_updates": {
+            "daddy_yankee": {
+                "status": "DECLINED secular music",
+                "likelihood": "LOW (5%)",
+                "reason": "Retired Dec 2023 for religious mission",
+                "only_option": "Sonríele (inspirational - unlikely fit)",
+                "source": "Complex interview, Jan 2026"
+            },
+            "primary_guest": "Cardi B (40%)",
+            "secondary_guest": "J Balvin (15%)"
         }
     }
 

@@ -144,6 +144,8 @@ Songs that narrowly missed the prediction but could appear:
 
 ---
 
+---
+
 ## Validation Against External Signals
 
 *Last updated: January 30, 2026*
@@ -172,7 +174,7 @@ Songs that narrowly missed the prediction but could appear:
 | Si estuviésemos juntos | 96% | None found | 96% | → UNCHANGED |
 | NUEVAYoL | 95% | Rumored: LatiNation, fan speculation | 96% | → UNCHANGED |
 | Soy peor | 95% | None found | 95% | → UNCHANGED |
-| La santa | 94% | Guest potential: Daddy Yankee (MEDIUM) | 95% | → UNCHANGED |
+| La santa | 94% | None found | 94% | → UNCHANGED |
 | Me porto bonito | 94% | Rumored: Billboard dream setlist | 95% | → UNCHANGED |
 | Estamos bien | 94% | None found | 94% | → UNCHANGED |
 
@@ -195,8 +197,8 @@ These songs were mentioned by external sources but ranked lower in our model:
 | Artist | Likelihood | Potential Song | Why |
 |--------|------------|----------------|-----|
 | Cardi B | HIGH | 'I Like It' | Already at venue, minimal coordination needed |
-| J Balvin | MEDIUM | 'Oasis tracks or I Like It' | Rehearsal sightings, social media hints |
-| Daddy Yankee | MEDIUM | 'La santa' | Rehearsal sightings, social media hints |
+| J Balvin | MEDIUM-HIGH | 'Oasis tracks or I Like It' | Rehearsal sightings, social media hints |
+| Daddy Yankee | LOW | 'Sonríele (inspirational only)' | Rehearsal sightings, social media hints |
 | Residente | LOW-MEDIUM | 'Unknown' | Rehearsal sightings, social media hints |
 | Rosalía | LOW-MEDIUM | 'La noche de anoche' | Rehearsal sightings, social media hints |
 | Drake | LOW | 'MIA' | Rehearsal sightings, social media hints |
@@ -278,14 +280,24 @@ This means **Cardi B will already be at Levi's Stadium** to support her boyfrien
 1. **Repeat Performance**: NFL may want fresh content, not SB 2020 callback
 2. **Time Constraint**: Adding a guest takes stage time for transitions
 3. **Bad Bunny's Vision**: He may want a fully Spanish-language show
-4. **Daddy Yankee Priority**: If only one guest, La santa with Daddy Yankee may be preferred
 
-### Likelihood Assessment
+### ⚠️ Daddy Yankee Update (January 30, 2026)
+
+Per [Complex interview](https://www.complex.com/music/a/bernadette-giacomazzo/daddy-yankee-says-he-wouldnt-perform-gasolina-with-bad-bunny):
+
+> "I'm in a different mission right now. So I gotta represent what I'm doing right now 100 percent."
+
+**Daddy Yankee has DECLINED** to perform secular music. He retired in December 2023 for his religious mission. The only track he'd consider is his inspirational song "Sonríele" — which doesn't fit a Super Bowl halftime energy.
+
+**This makes Cardi B the clear primary guest option.**
+
+### Likelihood Assessment (Updated)
 
 | Scenario | Probability |
 |----------|-------------|
-| Cardi B appears with "I Like It" | **35%** (up from 10%) |
-| No guest appearances | 40% |
-| Daddy Yankee appears (La santa) | 20% |
-| Other guest (J Balvin, Rosalía) | 5% |
+| Cardi B appears with "I Like It" | **40%** ⬆️ |
+| No guest appearances | 35% |
+| J Balvin appears (solo or with Cardi) | 15% |
+| ~~Daddy Yankee appears (La santa)~~ | ~~20%~~ → **5%** (Sonríele only) |
+| Other guest (Rosalía, Residente) | 5% |
 
