@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bad Bunny Super Bowl LX Setlist Prediction</title>
+    <meta property="og:title" content="Bad Bunny Super Bowl LX Setlist Prediction">
+    <meta property="og:description" content="ML-powered prediction for Bad Bunny's halftime show - February 8, 2026">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bb-yellow: #FFD700;
+            --bb-pink: #FF1493;
+            --bb-purple: #8B5CF6;
+            --bb-dark: #0F0F0F;
+            --bb-gray: #1A1A1A;
+            --bb-light: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, var(--bb-dark) 0%, #1a0a2e 50%, var(--bb-dark) 100%);
+            min-height: 100vh;
+            color: var(--bb-light);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--bb-yellow), var(--bb-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .event-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .event-badge {
+            background: var(--bb-gray);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #333;
+        }
+
+        .confidence-meter {
+            background: var(--bb-gray);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+            border: 1px solid #333;
+        }
+
+        .confidence-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .confidence-label {
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .confidence-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--bb-yellow);
+        }
+
+        .confidence-bar {
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            width: 96%;
+            background: linear-gradient(90deg, var(--bb-purple), var(--bb-pink), var(--bb-yellow));
+            border-radius: 4px;
+        }
+
+        .setlist-card {
+            background: var(--bb-gray);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid #333;
+            margin-bottom: 25px;
+        }
+
+        .setlist-header {
+            background: linear-gradient(135deg, var(--bb-purple), var(--bb-pink));
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .setlist-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .setlist-runtime {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .song-list {
+            padding: 10px 0;
+        }
+
+        .song-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            transition: background 0.2s;
+        }
+
+        .song-item:last-child {
+            border-bottom: none;
+        }
+
+        .song-item:hover {
+            background: #252525;
+        }
+
+        .song-number {
+            width: 30px;
+            height: 30px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .song-info {
+            flex-grow: 1;
+        }
+
+        .song-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 3px;
+        }
+
+        .song-meta {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .song-confidence {
+            text-align: right;
+            margin-left: 10px;
+        }
+
+        .confidence-score {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .confidence-high { color: #22C55E; }
+        .confidence-medium { color: var(--bb-yellow); }
+
+        .song-badges {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            font-size: 0.65rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .badge-confirmed {
+            background: #22C55E;
+            color: #000;
+        }
+
+        .badge-new {
+            background: var(--bb-purple);
+            color: #fff;
+        }
+
+        .badge-classic {
+            background: var(--bb-pink);
+            color: #fff;
+        }
+
+        .guest-section {
+            background: var(--bb-gray);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #333;
+            margin-bottom: 25px;
+        }
+
+        .guest-header {
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guest-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .guest-item:last-child {
+            border-bottom: none;
+        }
+
+        .guest-name {
+            font-weight: 600;
+        }
+
+        .guest-song {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .guest-likelihood {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .likelihood-high {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22C55E;
+            border: 1px solid #22C55E;
+        }
+
+        .likelihood-medium {
+            background: rgba(255, 215, 0, 0.2);
+            color: var(--bb-yellow);
+            border: 1px solid var(--bb-yellow);
+        }
+
+        .likelihood-low {
+            background: rgba(255, 255, 255, 0.1);
+            color: #888;
+            border: 1px solid #555;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .footer a {
+            color: var(--bb-pink);
+            text-decoration: none;
+        }
+
+        .methodology-note {
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid var(--bb-purple);
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 0.85rem;
+            color: #ccc;
+            margin-bottom: 25px;
+        }
+
+        .methodology-note strong {
+            color: var(--bb-purple);
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .song-item {
+                padding: 10px 15px;
+            }
+
+            .event-info {
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">BAD BUNNY</h1>
+            <p class="subtitle">Super Bowl LX Halftime Show Prediction</p>
+            <div class="event-info">
+                <span class="event-badge">Feb 8, 2026</span>
+                <span class="event-badge">Levi's Stadium</span>
+                <span class="event-badge">Santa Clara, CA</span>
+            </div>
+        </header>
+
+        <div class="confidence-meter">
+            <div class="confidence-header">
+                <span class="confidence-label">Model Confidence</span>
+                <span class="confidence-value">96%</span>
+            </div>
+            <div class="confidence-bar">
+                <div class="confidence-fill"></div>
+            </div>
+        </div>
+
+        <div class="methodology-note">
+            <strong>Methodology:</strong> ML model trained on 471 setlists + constraint optimization for Super Bowl format. Validated against Puerto Rico residency shows (AUC 0.834).
+        </div>
+
+        <div class="setlist-card">
+            <div class="setlist-header">
+                <span class="setlist-title">Expected Setlist (10 songs)</span>
+                <span class="setlist-runtime">12:59</span>
+            </div>
+            <div class="song-list">
+                <div class="song-item">
+                    <div class="song-number">1</div>
+                    <div class="song-info">
+                        <div class="song-name">BAILE INoLVIDABLE</div>
+                        <div class="song-meta">2:00 - Debí Tirar Más Fotos</div>
+                        <div class="song-badges">
+                            <span class="badge badge-confirmed">Confirmed</span>
+                            <span class="badge badge-new">New Album</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">100%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">2</div>
+                    <div class="song-info">
+                        <div class="song-name">Yo perreo sola</div>
+                        <div class="song-meta">1:08 - YHLQMDLG</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">100%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">3</div>
+                    <div class="song-info">
+                        <div class="song-name">Amorfoda</div>
+                        <div class="song-meta">1:01</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">98%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">4</div>
+                    <div class="song-info">
+                        <div class="song-name">Chambea</div>
+                        <div class="song-meta">1:16</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">98%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">5</div>
+                    <div class="song-info">
+                        <div class="song-name">Si estuviésemos juntos</div>
+                        <div class="song-meta">1:07</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">96%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">6</div>
+                    <div class="song-info">
+                        <div class="song-name">NUEVAYoL</div>
+                        <div class="song-meta">1:22 - Debí Tirar Más Fotos</div>
+                        <div class="song-badges">
+                            <span class="badge badge-new">New Album</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">95%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">7</div>
+                    <div class="song-info">
+                        <div class="song-name">Soy peor</div>
+                        <div class="song-meta">1:18</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-high">95%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">8</div>
+                    <div class="song-info">
+                        <div class="song-name">La santa</div>
+                        <div class="song-meta">1:18</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-medium">94%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">9</div>
+                    <div class="song-info">
+                        <div class="song-name">Me porto bonito</div>
+                        <div class="song-meta">1:11 - Un Verano Sin Ti</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-medium">94%</div>
+                    </div>
+                </div>
+
+                <div class="song-item">
+                    <div class="song-number">10</div>
+                    <div class="song-info">
+                        <div class="song-name">Estamos bien</div>
+                        <div class="song-meta">1:18</div>
+                        <div class="song-badges">
+                            <span class="badge badge-classic">Classic</span>
+                        </div>
+                    </div>
+                    <div class="song-confidence">
+                        <div class="confidence-score confidence-medium">94%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="guest-section">
+            <div class="guest-header">
+                <span>Guest Artist Predictions</span>
+            </div>
+            <div class="guest-item">
+                <div>
+                    <div class="guest-name">Cardi B</div>
+                    <div class="guest-song">"I Like It" - Boyfriend playing in game</div>
+                </div>
+                <span class="guest-likelihood likelihood-high">40%</span>
+            </div>
+            <div class="guest-item">
+                <div>
+                    <div class="guest-name">J Balvin</div>
+                    <div class="guest-song">Oasis / "I Like It" reunion</div>
+                </div>
+                <span class="guest-likelihood likelihood-medium">15%</span>
+            </div>
+            <div class="guest-item">
+                <div>
+                    <div class="guest-name">No Guest</div>
+                    <div class="guest-song">Solo performance</div>
+                </div>
+                <span class="guest-likelihood likelihood-medium">35%</span>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Prediction generated January 30, 2026</p>
+            <p>ML model trained on Setlist.fm data | <a href="PREDICTION_REPORT.md">Full Report</a></p>
+            <p style="margin-top: 10px; font-style: italic;">For entertainment purposes. Actual setlist may vary.</p>
+        </footer>
+    </div>
+</body>
+</html>

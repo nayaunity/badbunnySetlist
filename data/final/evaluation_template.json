@@ -1,0 +1,104 @@
+{
+  "evaluation_metadata": {
+    "prediction_date": "2026-01-30",
+    "event_date": "2026-02-08",
+    "event_name": "Super Bowl LX Halftime Show",
+    "artist": "Bad Bunny",
+    "venue": "Levi's Stadium, Santa Clara, CA",
+    "model_confidence": 0.96,
+    "status": "awaiting_validation"
+  },
+
+  "predictions": {
+    "expected_setlist": [
+      {"position": 1, "song": "BAILE INoLVIDABLE", "confidence": 1.00, "type": "confirmed"},
+      {"position": 2, "song": "Yo perreo sola", "confidence": 1.00, "type": "classic"},
+      {"position": 3, "song": "Amorfoda", "confidence": 0.98, "type": "classic"},
+      {"position": 4, "song": "Chambea", "confidence": 0.98, "type": "classic"},
+      {"position": 5, "song": "Si estuviésemos juntos", "confidence": 0.96, "type": "classic"},
+      {"position": 6, "song": "NUEVAYoL", "confidence": 0.95, "type": "new_album"},
+      {"position": 7, "song": "Soy peor", "confidence": 0.95, "type": "classic"},
+      {"position": 8, "song": "La santa", "confidence": 0.94, "type": "classic"},
+      {"position": 9, "song": "Me porto bonito", "confidence": 0.94, "type": "classic"},
+      {"position": 10, "song": "Estamos bien", "confidence": 0.94, "type": "classic"}
+    ],
+    "honorable_mentions": [
+      "El apagón", "Si veo a tu mamá", "Efecto", "Tití me preguntó",
+      "Dákiti", "Neverita", "Callaíta", "Tú no metes cabra"
+    ],
+    "guest_predictions": {
+      "cardi_b": {"likelihood": 0.40, "song": "I Like It"},
+      "j_balvin": {"likelihood": 0.15, "song": "Oasis or I Like It"},
+      "no_guest": {"likelihood": 0.35, "song": null},
+      "daddy_yankee": {"likelihood": 0.05, "song": "Sonríele"},
+      "other": {"likelihood": 0.05, "song": null}
+    }
+  },
+
+  "actual_results": {
+    "actual_setlist": [],
+    "actual_runtime_seconds": null,
+    "guest_appearances": [],
+    "surprise_elements": [],
+    "notes": ""
+  },
+
+  "scoring": {
+    "song_matches": {
+      "true_positives": [],
+      "false_positives": [],
+      "false_negatives": [],
+      "true_positive_count": null,
+      "false_positive_count": null,
+      "false_negative_count": null
+    },
+    "metrics": {
+      "precision": null,
+      "recall": null,
+      "f1_score": null,
+      "accuracy": null
+    },
+    "bonus_points": {
+      "confirmed_song_appeared": null,
+      "new_album_count_correct": null,
+      "guest_prediction_correct": null,
+      "runtime_within_range": null
+    }
+  },
+
+  "overall_evaluation": {
+    "rating": null,
+    "rating_scale": {
+      "5_stars": "8+ songs correct, guest prediction right",
+      "4_stars": "6-7 songs correct",
+      "3_stars": "4-5 songs correct",
+      "2_stars": "2-3 songs correct",
+      "1_star": "<2 songs correct"
+    },
+    "summary": ""
+  },
+
+  "instructions": {
+    "how_to_fill": [
+      "1. After Feb 8, fill in actual_results.actual_setlist with songs performed",
+      "2. Add any guest appearances to actual_results.guest_appearances",
+      "3. Run comparison: check which predicted songs appeared (true_positives)",
+      "4. Songs we predicted but didn't appear = false_positives",
+      "5. Songs that appeared but we didn't predict = false_negatives",
+      "6. Calculate metrics using formulas below",
+      "7. Assign star rating based on criteria"
+    ],
+    "metric_formulas": {
+      "precision": "true_positives / (true_positives + false_positives)",
+      "recall": "true_positives / (true_positives + false_negatives)",
+      "f1_score": "2 * (precision * recall) / (precision + recall)",
+      "accuracy": "true_positives / actual_setlist_length"
+    }
+  },
+
+  "comparison_helper": {
+    "description": "Paste actual setlist here, one song per line, to compare",
+    "actual_songs_raw": "",
+    "matching_algorithm": "Case-insensitive partial match on song names"
+  }
+}
