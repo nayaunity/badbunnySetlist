@@ -1,7 +1,7 @@
 # Bad Bunny Super Bowl LX Halftime Show Prediction
 
 **Generated:** January 30, 2026
-**Event Date:** February 8, 2026 | New Orleans, Louisiana
+**Event Date:** February 8, 2026 | Santa Clara, California
 **Confidence Level:** 96%
 
 ---
@@ -137,6 +137,93 @@ Songs that narrowly missed the prediction but could appear:
 - **Surprise Elements:** Super Bowl shows frequently include unexpected moments
 - **Guest Appearances:** A surprise guest could alter song selection
 - **Current Events:** Last-minute changes based on cultural moments
+
+---
+
+---
+
+## Validation Against External Signals
+
+*Last updated: January 30, 2026*
+
+### Sources Checked
+- Official NFL/Apple Music announcements
+- Bad Bunny's official trailer (January 16, 2026)
+- Billboard, Rolling Stone, Cosmopolitan predictions
+- Social media and entertainment news
+- Rehearsal reports from Santa Clara
+
+### Confirmed Information
+
+| Song | Source | Date | Status |
+|------|--------|------|--------|
+| BAILE INoLVIDABLE | Apple Music Halftime Trailer | Jan 16, 2026 | ✅ CONFIRMED |
+
+### Confidence Adjustments
+
+| Song | Original | External Evidence | Adjusted | Change |
+|------|----------|-------------------|----------|--------|
+| BAILE INoLVIDABLE | 100% | CONFIRMED: Official Apple Music halftime trailer (... | 100% | → UNCHANGED |
+| Yo perreo sola | 100% | Rumored: Multiple media predictions (Billboard, Co... | 100% | ↑ UP |
+| Amorfoda | 98% | None found | 98% | → UNCHANGED |
+| Chambea | 98% | None found | 98% | → UNCHANGED |
+| Si estuviésemos juntos | 96% | None found | 96% | → UNCHANGED |
+| NUEVAYoL | 95% | Rumored: LatiNation, fan speculation | 96% | → UNCHANGED |
+| Soy peor | 95% | None found | 95% | → UNCHANGED |
+| La santa | 94% | Guest potential: Daddy Yankee (MEDIUM) | 95% | → UNCHANGED |
+| Me porto bonito | 94% | Rumored: Billboard dream setlist | 95% | → UNCHANGED |
+| Estamos bien | 94% | None found | 94% | → UNCHANGED |
+
+### Songs to Watch
+
+These songs were mentioned by external sources but ranked lower in our model:
+
+| Song | External Confidence | Our Rank | Why They Might Appear |
+|------|---------------------|----------|----------------------|
+| Tití me preguntó | MEDIUM-HIGH | #N/A | Suggested as high-energy opener |
+| Dákiti | MEDIUM | #N/A | Crossover hit, widely expected |
+| El Apagón | MEDIUM | #N/A | High cultural significance |
+
+---
+
+## What to Watch For
+
+### Guest Artist Predictions
+
+| Artist | Likelihood | Potential Song | Why |
+|--------|------------|----------------|-----|
+| Cardi B | MEDIUM-HIGH | 'I Like It' | Rehearsal sightings, social media hints |
+| J Balvin | MEDIUM | 'Oasis tracks or I Like It' | Rehearsal sightings, social media hints |
+| Daddy Yankee | MEDIUM | 'La santa' | Rehearsal sightings, social media hints |
+| Residente | LOW-MEDIUM | 'Unknown' | Rehearsal sightings, social media hints |
+| Rosalía | LOW-MEDIUM | 'La noche de anoche' | Rehearsal sightings, social media hints |
+| Drake | LOW | 'MIA' | Rehearsal sightings, social media hints |
+
+### Potential Surprises
+
+| Element | Likelihood | What It Could Mean |
+|---------|------------|-------------------|
+| Puerto Rico Tribute | HIGH | Cultural/political moment during El Apagón or NUEVAYoL |
+| New Music Debut | LOW | Possible new single announcement |
+| Dancer/Choreography Spectacle | HIGH | Trailer emphasized dancing - expect major choreography |
+
+### Key Uncertainties
+
+1. **Guest Artists**: No guests officially confirmed; Cardi B most likely given boyfriend in game
+2. **Song Order**: Trailer suggests dancing theme but actual sequence unknown
+3. **Medley vs Full Songs**: Unknown how many songs will be snippets vs full performances
+4. **Political Moments**: El Apagón has political themes - unclear if NFL will allow full message
+5. **Technical Production**: Stage design could influence song selection
+
+### Pre-Show Checklist
+
+Before February 8, monitor for:
+- [ ] Official setlist leaks from rehearsals
+- [ ] Guest artist arrivals in Santa Clara
+- [ ] Social media hints from Bad Bunny's accounts
+- [ ] Stage design/prop photos from Levi's Stadium
+- [ ] Last-minute song announcements
+- [ ] Dancer/choreography reveals
 
 ---
 
