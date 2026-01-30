@@ -76,9 +76,11 @@ EXTERNAL_SIGNALS = {
 
     "guest_artist_rumors": {
         "Cardi B": {
-            "likelihood": "MEDIUM-HIGH",
-            "reason": "Collaborated on 'I Like It', boyfriend (Stefon Diggs) playing in Super Bowl",
-            "song": "I Like It"
+            "likelihood": "HIGH",
+            "reason": "Boyfriend Stefon Diggs CONFIRMED playing in Super Bowl LX - Cardi will be at Levi's Stadium",
+            "song": "I Like It",
+            "logistics_note": "Already at venue, minimal coordination needed",
+            "updated": "January 30, 2026"
         },
         "J Balvin": {
             "likelihood": "MEDIUM",
@@ -108,13 +110,22 @@ EXTERNAL_SIGNALS = {
     },
 
     "songs_unlikely": {
-        "I Like It": {
-            "reason": "Performed at Super Bowl 2020 with J.Lo/Shakira - unlikely to repeat",
-            "our_action": "Already deprioritized in model"
-        },
         "Chantaje": {
-            "reason": "Also performed at SB 2020",
+            "reason": "Performed at SB 2020",
             "our_action": "Not in our predictions"
+        }
+    },
+
+    "wild_card_songs": {
+        "I Like It": {
+            "artists": ["Cardi B", "J Balvin"],
+            "original_status": "Deprioritized (performed at SB 2020)",
+            "new_status": "WATCH LIST - HIGH",
+            "reason": "Cardi B will be at Levi's Stadium (boyfriend Stefon Diggs playing). Logistics advantage may override 'no repeat' rule.",
+            "live_performances": 89,
+            "chart_peak": "#1 Billboard Hot 100",
+            "cultural_impact": "First female rapper with multiple #1s, over 1B video views",
+            "if_included": "Would likely bump a classic hit (Estamos bien or Neverita) from expected setlist"
         }
     },
 
@@ -235,6 +246,76 @@ def find_missed_songs(predictions: Dict, external: Dict, df: pd.DataFrame) -> Li
     return missed
 
 
+def generate_wild_card_scenario(external: Dict, predictions: Dict) -> str:
+    """Generate wild card scenario analysis."""
+
+    wild_cards = external.get("wild_card_songs", {})
+    if not wild_cards:
+        return ""
+
+    scenario = """
+---
+
+## 🃏 Wild Card Scenario: Cardi B Appearance
+
+### New Intel (January 30, 2026)
+**Stefon Diggs (Patriots WR) is CONFIRMED playing in Super Bowl LX.**
+
+This means **Cardi B will already be at Levi's Stadium** to support her boyfriend — dramatically increasing the likelihood of a guest appearance.
+
+### Impact on "I Like It"
+
+| Factor | Assessment |
+|--------|------------|
+| **Original Status** | Deprioritized (performed at SB 2020) |
+| **New Status** | 🔥 WATCH LIST - HIGH |
+| **Logistics** | ✅ Cardi already at venue, minimal coordination |
+| **Song Stats** | 89 live performances, #1 Billboard Hot 100 |
+| **Cultural Weight** | First female rapper with multiple #1s, 1B+ video views |
+
+### If "I Like It" Is Added
+
+**Expected setlist adjustment:**
+
+| Position | Current Pick | Wild Card Scenario |
+|----------|--------------|-------------------|
+| 1 | BAILE INoLVIDABLE | BAILE INoLVIDABLE |
+| 2 | Yo perreo sola | Yo perreo sola |
+| 3 | Amorfoda | Amorfoda |
+| 4 | Chambea | Chambea |
+| 5 | Si estuviésemos juntos | Si estuviésemos juntos |
+| 6 | NUEVAYoL | NUEVAYoL |
+| 7 | Soy peor | Soy peor |
+| 8 | La santa | La santa |
+| 9 | Me porto bonito | **I Like It** 🆕 (w/ Cardi B) |
+| 10 | Estamos bien | ~~Estamos bien~~ (bumped) |
+
+**Why this works:**
+- "I Like It" is a natural crowd-pleaser with massive crossover appeal
+- The 2020 performance was brief (medley segment) — a 2026 version could be more prominent
+- Having Cardi on stage creates a viral moment and validates Bad Bunny's mainstream status
+- J Balvin (also on original track) could potentially join, making it a reunion
+
+### Counter-Arguments
+
+1. **Repeat Performance**: NFL may want fresh content, not SB 2020 callback
+2. **Time Constraint**: Adding a guest takes stage time for transitions
+3. **Bad Bunny's Vision**: He may want a fully Spanish-language show
+4. **Daddy Yankee Priority**: If only one guest, La santa with Daddy Yankee may be preferred
+
+### Likelihood Assessment
+
+| Scenario | Probability |
+|----------|-------------|
+| Cardi B appears with "I Like It" | **35%** (up from 10%) |
+| No guest appearances | 40% |
+| Daddy Yankee appears (La santa) | 20% |
+| Other guest (J Balvin, Rosalía) | 5% |
+
+"""
+    return scenario
+
+
 def generate_watch_list(external: Dict) -> List[Dict]:
     """Generate watch list for potential surprises."""
 
@@ -247,7 +328,7 @@ def generate_watch_list(external: Dict) -> List[Dict]:
             "item": artist,
             "likelihood": info["likelihood"],
             "implications": f"Could add '{info.get('song', 'TBD')}' to setlist",
-            "watch_for": "Rehearsal sightings, social media hints"
+            "watch_for": info.get("logistics_note", "Rehearsal sightings, social media hints")
         })
 
     # Add general surprises
@@ -299,7 +380,14 @@ def update_predictions(predictions: Dict, validations: List[SongValidation]) -> 
         "validated_at": datetime.now().isoformat(),
         "external_signals_date": "January 30, 2026",
         "confirmed_songs": list(EXTERNAL_SIGNALS["confirmed_songs"].keys()),
-        "guest_rumors": list(EXTERNAL_SIGNALS["guest_artist_rumors"].keys())
+        "guest_rumors": list(EXTERNAL_SIGNALS["guest_artist_rumors"].keys()),
+        "wild_card_scenario": {
+            "trigger": "Cardi B at Levi's Stadium (boyfriend Stefon Diggs playing)",
+            "song": "I Like It",
+            "likelihood": "35%",
+            "would_replace": "Estamos bien or Neverita",
+            "note": "Logistics advantage may override 'no repeat' rule from SB 2020"
+        }
     }
 
     return updated
@@ -309,9 +397,15 @@ def generate_validation_report(
     validations: List[SongValidation],
     missed_songs: List[Dict],
     watch_list: List[Dict],
-    predictions: Dict
+    predictions: Dict,
+    external: Dict = None
 ) -> str:
     """Generate validation section for the report."""
+
+    # Add wild card scenario if external signals provided
+    wild_card_section = ""
+    if external:
+        wild_card_section = generate_wild_card_scenario(external, predictions)
 
     report = """
 
@@ -400,10 +494,14 @@ Before February 8, monitor for:
 - [ ] Stage design/prop photos from Levi's Stadium
 - [ ] Last-minute song announcements
 - [ ] Dancer/choreography reveals
+- [ ] **Cardi B sightings at Levi's Stadium rehearsals** ⭐
 
 ---
 
 """
+
+    # Add wild card section
+    report += wild_card_section
 
     return report
 
@@ -517,7 +615,7 @@ def main():
 
     # Generate validation report section
     validation_report = generate_validation_report(
-        validations, missed_songs, watch_list, predictions
+        validations, missed_songs, watch_list, predictions, EXTERNAL_SIGNALS
     )
 
     # Save outputs

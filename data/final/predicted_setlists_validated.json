@@ -563,7 +563,7 @@
     }
   ],
   "validation": {
-    "validated_at": "2026-01-30T14:22:39.984549",
+    "validated_at": "2026-01-30T14:30:48.305919",
     "external_signals_date": "January 30, 2026",
     "confirmed_songs": [
       "BAILE INoLVIDABLE"
@@ -575,6 +575,13 @@
       "Residente",
       "Rosalía",
       "Drake"
-    ]
+    ],
+    "wild_card_scenario": {
+      "trigger": "Cardi B at Levi's Stadium (boyfriend Stefon Diggs playing)",
+      "song": "I Like It",
+      "likelihood": "35%",
+      "would_replace": "Estamos bien or Neverita",
+      "note": "Logistics advantage may override 'no repeat' rule from SB 2020"
+    }
   }
 }

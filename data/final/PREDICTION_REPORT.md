@@ -142,6 +142,8 @@ Songs that narrowly missed the prediction but could appear:
 
 ---
 
+---
+
 ## Validation Against External Signals
 
 *Last updated: January 30, 2026*
@@ -192,7 +194,7 @@ These songs were mentioned by external sources but ranked lower in our model:
 
 | Artist | Likelihood | Potential Song | Why |
 |--------|------------|----------------|-----|
-| Cardi B | MEDIUM-HIGH | 'I Like It' | Rehearsal sightings, social media hints |
+| Cardi B | HIGH | 'I Like It' | Already at venue, minimal coordination needed |
 | J Balvin | MEDIUM | 'Oasis tracks or I Like It' | Rehearsal sightings, social media hints |
 | Daddy Yankee | MEDIUM | 'La santa' | Rehearsal sightings, social media hints |
 | Residente | LOW-MEDIUM | 'Unknown' | Rehearsal sightings, social media hints |
@@ -224,21 +226,66 @@ Before February 8, monitor for:
 - [ ] Stage design/prop photos from Levi's Stadium
 - [ ] Last-minute song announcements
 - [ ] Dancer/choreography reveals
+- [ ] **Cardi B sightings at Levi's Stadium rehearsals** ⭐
 
 ---
 
-## About This Prediction
-
-This analysis was created using:
-- Python (pandas, scikit-learn)
-- Data from Setlist.fm API and MusicBrainz
-- Custom constraint optimization for halftime format
-
-**Model Performance:**
-- Validated against Puerto Rico residency (2024-2025) — 82 songs
-- Correctly predicted 90% of PR finale songs in top-20 rankings
 
 ---
 
-*Prediction generated for entertainment purposes. Actual setlist may vary.*
+## 🃏 Wild Card Scenario: Cardi B Appearance
+
+### New Intel (January 30, 2026)
+**Stefon Diggs (Patriots WR) is CONFIRMED playing in Super Bowl LX.**
+
+This means **Cardi B will already be at Levi's Stadium** to support her boyfriend — dramatically increasing the likelihood of a guest appearance.
+
+### Impact on "I Like It"
+
+| Factor | Assessment |
+|--------|------------|
+| **Original Status** | Deprioritized (performed at SB 2020) |
+| **New Status** | 🔥 WATCH LIST - HIGH |
+| **Logistics** | ✅ Cardi already at venue, minimal coordination |
+| **Song Stats** | 89 live performances, #1 Billboard Hot 100 |
+| **Cultural Weight** | First female rapper with multiple #1s, 1B+ video views |
+
+### If "I Like It" Is Added
+
+**Expected setlist adjustment:**
+
+| Position | Current Pick | Wild Card Scenario |
+|----------|--------------|-------------------|
+| 1 | BAILE INoLVIDABLE | BAILE INoLVIDABLE |
+| 2 | Yo perreo sola | Yo perreo sola |
+| 3 | Amorfoda | Amorfoda |
+| 4 | Chambea | Chambea |
+| 5 | Si estuviésemos juntos | Si estuviésemos juntos |
+| 6 | NUEVAYoL | NUEVAYoL |
+| 7 | Soy peor | Soy peor |
+| 8 | La santa | La santa |
+| 9 | Me porto bonito | **I Like It** 🆕 (w/ Cardi B) |
+| 10 | Estamos bien | ~~Estamos bien~~ (bumped) |
+
+**Why this works:**
+- "I Like It" is a natural crowd-pleaser with massive crossover appeal
+- The 2020 performance was brief (medley segment) — a 2026 version could be more prominent
+- Having Cardi on stage creates a viral moment and validates Bad Bunny's mainstream status
+- J Balvin (also on original track) could potentially join, making it a reunion
+
+### Counter-Arguments
+
+1. **Repeat Performance**: NFL may want fresh content, not SB 2020 callback
+2. **Time Constraint**: Adding a guest takes stage time for transitions
+3. **Bad Bunny's Vision**: He may want a fully Spanish-language show
+4. **Daddy Yankee Priority**: If only one guest, La santa with Daddy Yankee may be preferred
+
+### Likelihood Assessment
+
+| Scenario | Probability |
+|----------|-------------|
+| Cardi B appears with "I Like It" | **35%** (up from 10%) |
+| No guest appearances | 40% |
+| Daddy Yankee appears (La santa) | 20% |
+| Other guest (J Balvin, Rosalía) | 5% |
 
